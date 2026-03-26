@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme {
+  /* Surfaces */
+  --color-surface-primary: #FAFAF7;
+  --color-surface-secondary: #F2F0EB;
+  --color-surface-tertiary: #E8E5DE;
+  --color-surface-inverse: #1C1917;
+
+  /* Text */
+  --color-text-primary: #1C1917;
+  --color-text-secondary: #57534E;
+  --color-text-tertiary: #A8A29E;
+
+  /* Semantic */
+  --color-income: #16653A;
+  --color-income-bg: #ECFDF5;
+  --color-expense: #B91C1C;
+  --color-expense-bg: #FEF2F2;
+  --color-balance: #1D4E89;
+  --color-balance-bg: #EFF6FF;
+  --color-neutral: #78716C;
+  --color-neutral-bg: #F5F5F4;
+
+  /* Chart palette */
+  --color-chart-1: #2D6A4F;
+  --color-chart-2: #6B4C9A;
+  --color-chart-3: #C06014;
+  --color-chart-4: #1D4E89;
+  --color-chart-5: #92782A;
+  --color-chart-6: #B44D6C;
+  --color-chart-7: #3B7A8B;
+  --color-chart-8: #5C6B3C;
+  --color-chart-9: #16653A;
+  --color-chart-10: #8B6B4A;
+  --color-chart-11: #78716C;
+
+  /* Accent */
+  --color-masthead: #C4A35A;
+  --color-border: #E8E5DE;
+  --color-border-hover: #D6D3CC;
+  --color-focus: #1D4E89;
+
+  /* Fonts */
+  --font-display: 'Newsreader', Georgia, serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Spacing */
+  --spacing-section: 2.5rem;
+  --spacing-card: 1.5rem;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-surface-primary);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

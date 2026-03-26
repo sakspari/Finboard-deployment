@@ -1,0 +1,27 @@
+{
+  "$schema": "https://turborepo.dev/schema.json",
+  "globalDependencies": ["tsconfig.base.json"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["src/**", "app/**", "components/**", "hooks/**", "store/**", "lib/**", "package.json", "tsconfig.json"],
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "lint": {
+      "inputs": ["src/**", "app/**", "components/**", "hooks/**", "store/**", "lib/**"],
+      "outputs": []
+    },
+    "typecheck": {
+      "dependsOn": ["^build"],
+      "inputs": ["src/**", "app/**", "components/**", "hooks/**", "store/**", "lib/**", "tsconfig.json"],
+      "outputs": []
+    },
+    "clean": {
+      "cache": false
+    }
+  }
+}
