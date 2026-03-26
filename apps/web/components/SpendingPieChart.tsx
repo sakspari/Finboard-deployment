@@ -44,7 +44,7 @@ export const SpendingPieChart = React.memo(function SpendingPieChart() {
           animationDuration={500}
         >
           {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={entry.color} stroke="none" />
+            <Cell key={`cell-${index}`} fill={entry.color} stroke="#18181B" strokeWidth={2} />
           ))}
           <Label
             position="center"

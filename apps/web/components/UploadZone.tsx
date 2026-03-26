@@ -83,25 +83,24 @@ export function UploadZone() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-[calc(100vh-4rem)]">
+    <div className="flex items-center justify-center min-h-[calc(100vh-8rem)] md:min-h-[calc(100vh-9rem)]">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] }}
-        className="w-full max-w-xl"
+        className="w-full max-w-2xl"
       >
         <div
           onDrop={handleDrop}
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
           onClick={handleClick}
-          className={`
-            relative cursor-pointer rounded-2xl border-2 border-dashed p-12 text-center transition-all duration-200
+          className={`glass-shell glass-grid relative cursor-pointer rounded-[32px] p-12 md:p-16 text-center transition-all duration-300
             ${isDragging
-              ? "border-balance bg-balance-bg scale-[1.01]"
-              : "border-border hover:border-border-hover"
+              ? "border-[rgba(124,140,255,0.55)] bg-balance-bg/70 scale-[1.015] shadow-[0_20px_80px_rgba(79,140,255,0.18)]"
+              : "hover:border-border-hover hover:-translate-y-0.5"
             }
-            ${isUploading ? "pointer-events-none opacity-60" : ""}
+            ${isUploading ? "pointer-events-none opacity-70" : ""}
           `}
         >
           <input
@@ -112,31 +111,39 @@ export function UploadZone() {
             className="hidden"
           />
 
-          <div className="flex flex-col items-center gap-4">
+          <div className="flex flex-col items-center gap-5 md:gap-6">
             {isUploading ? (
-              <div className="h-12 w-12 animate-spin rounded-full border-4 border-border border-t-balance" />
+              <div className="h-12 w-12 animate-spin rounded-full border-4 border-white/60 border-t-balance shadow-lg" />
             ) : (
-              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-surface-secondary">
-                <FileSpreadsheet className="h-8 w-8 text-text-secondary" />
-              </div>
+              <motion.div
+                animate={{ y: [0, -4, 0] }}
+                transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut' }}
+                className="glass-panel-soft flex h-20 w-20 items-center justify-center rounded-[28px]"
+              >
+                <FileSpreadsheet className="h-9 w-9 text-text-secondary" />
+              </motion.div>
             )}
 
-            <div>
-              <h2 className="font-[family-name:var(--font-display)] text-2xl font-semibold text-text-primary">
-                {isUploading ? "Processing..." : "Drop your bank statement"}
+            <div className="space-y-2">
+              <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-semibold tracking-[-0.04em] text-text-primary">
+                {isUploading ? "Processing your statement" : "Drop your bank statement"}
               </h2>
-              <p className="mt-2 text-sm text-text-secondary">
+              <p className="mx-auto max-w-md text-sm md:text-base text-text-secondary leading-relaxed">
                 {isUploading
-                  ? "Parsing and categorizing your transactions"
-                  : "CSV files up to 5MB. Your data stays in your browser."}
+                  ? "Parsing rows, detecting categories, and turning the CSV into a polished finance dashboard."
+                  : "Upload a CSV up to 5MB and Finboard will turn it into clean spending visuals, category insights, and searchable transactions."}
               </p>
             </div>
 
             {!isUploading && (
-              <button className="mt-2 inline-flex items-center gap-2 rounded-lg border border-border px-4 py-2 text-sm text-text-secondary hover:bg-surface-secondary transition-colors">
+              <motion.button
+                whileHover={{ y: -2, scale: 1.01 }}
+                whileTap={{ scale: 0.985 }}
+                className="glass-button mt-1 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium text-text-primary transition-all"
+              >
                 <Upload className="h-4 w-4" />
                 Browse files
-              </button>
+              </motion.button>
             )}
           </div>
         </div>
@@ -147,7 +154,7 @@ export function UploadZone() {
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
-              className="mt-4 flex items-center gap-2 rounded-lg bg-expense-bg px-4 py-3 text-sm text-expense"
+              className="glass-panel mt-4 flex items-center gap-2 rounded-2xl px-4 py-3 text-sm text-expense"
             >
               <AlertCircle className="h-4 w-4 shrink-0" />
               {errorMessage}

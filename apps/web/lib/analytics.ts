@@ -98,18 +98,18 @@ export function computeInsights(transactions: readonly Transaction[]): Insights 
 
 export function getCategoryBreakdown(transactions: readonly Transaction[]): { name: string; value: number; color: string }[] {
   const CHART_COLORS: Record<string, string> = {
-    "Food & Dining": "#2D6A4F",
-    "Groceries": "#6B4C9A",
-    "Shopping": "#C06014",
-    "Transportation": "#1D4E89",
-    "Housing": "#92782A",
-    "Utilities": "#B44D6C",
-    "Entertainment": "#3B7A8B",
-    "Health": "#5C6B3C",
-    "Subscriptions": "#16653A",
-    "Income": "#8B6B4A",
-    "Transfer": "#78716C",
-    "Other": "#A8A29E",
+    "Food & Dining": "#4A7DFF",
+    "Groceries": "#13C2C2",
+    "Shopping": "#FF8A65",
+    "Transportation": "#7C5CFF",
+    "Housing": "#17B26A",
+    "Utilities": "#F97066",
+    "Entertainment": "#A78BFA",
+    "Health": "#5AD1E6",
+    "Subscriptions": "#F5B700",
+    "Income": "#4A7DFF",
+    "Transfer": "#97A3B6",
+    "Other": "#B6C0CC",
   };
 
   const totals = new Map<string, number>();

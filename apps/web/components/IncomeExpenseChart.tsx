@@ -1,17 +1,39 @@
 "use client";
 
 import React from "react";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from "recharts";
+import {
+  Area,
+  AreaChart,
+  CartesianGrid,
+  Legend,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 import { useFilteredInsights } from "@/hooks/useFilteredData";
 import { formatCurrency } from "@/lib/formatters";
 
-function CustomTooltip({ active, payload, label }: { active?: boolean; payload?: Array<{ name: string; value: number; color: string }>; label?: string }) {
+function CustomTooltip({
+  active,
+  payload,
+  label,
+}: {
+  active?: boolean;
+  payload?: Array<{ name: string; value: number; color: string }>;
+  label?: string;
+}) {
   if (!active || !payload || payload.length === 0) return null;
+
   return (
-    <div className="rounded-lg bg-surface-inverse px-3 py-2 text-sm text-white shadow-lg">
+    <div className="glass-panel rounded-2xl px-3 py-2 text-sm text-text-primary shadow-xl">
       <p className="font-medium mb-1">{label}</p>
       {payload.map((entry, i) => (
-        <p key={i} className="font-[family-name:var(--font-mono)] text-xs" style={{ color: entry.color }}>
+        <p
+          key={i}
+          className="font-[family-name:var(--font-mono)] text-xs"
+          style={{ color: entry.color }}
+        >
           {entry.name}: {formatCurrency(entry.value)}
         </p>
       ))}
@@ -38,13 +60,23 @@ export const IncomeExpenseChart = React.memo(function IncomeExpenseChart() {
   }));
 
   return (
-    <ResponsiveContainer width="100%" height={280}>
-      <BarChart data={chartData} margin={{ top: 5, right: 10, left: 10, bottom: 5 }}>
-        <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" vertical={false} />
+    <ResponsiveContainer width="100%" height={300}>
+      <AreaChart data={chartData} margin={{ top: 10, right: 12, left: 6, bottom: 6 }}>
+        <defs>
+          <linearGradient id="incomeFill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="5%" stopColor="var(--color-income)" stopOpacity={0.34} />
+            <stop offset="95%" stopColor="var(--color-income)" stopOpacity={0.02} />
+          </linearGradient>
+          <linearGradient id="expenseFill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="5%" stopColor="var(--color-expense)" stopOpacity={0.28} />
+            <stop offset="95%" stopColor="var(--color-expense)" stopOpacity={0.02} />
+          </linearGradient>
+        </defs>
+        <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" vertical={false} />
         <XAxis
           dataKey="month"
           tick={{ fontSize: 11, fill: "var(--color-text-tertiary)" }}
-          axisLine={{ stroke: "var(--color-border)" }}
+          axisLine={{ stroke: "rgba(255,255,255,0.08)" }}
           tickLine={false}
         />
         <YAxis
@@ -54,24 +86,24 @@ export const IncomeExpenseChart = React.memo(function IncomeExpenseChart() {
           tickFormatter={(v: number) => `$${(v / 1000).toFixed(0)}k`}
         />
         <Tooltip content={<CustomTooltip />} />
-        <Legend
-          wrapperStyle={{ fontSize: 12 }}
-          iconType="circle"
-          iconSize={8}
-        />
-        <Bar
+        <Legend wrapperStyle={{ fontSize: 12 }} iconType="circle" iconSize={8} />
+        <Area
+          type="monotone"
           dataKey="Income"
-          fill="var(--color-income)"
-          radius={[4, 4, 0, 0]}
+          stroke="var(--color-income)"
+          fill="url(#incomeFill)"
+          strokeWidth={2.5}
           isAnimationActive={chartData.length < 24}
         />
-        <Bar
+        <Area
+          type="monotone"
           dataKey="Expenses"
-          fill="var(--color-expense)"
-          radius={[4, 4, 0, 0]}
+          stroke="var(--color-expense)"
+          fill="url(#expenseFill)"
+          strokeWidth={2.5}
           isAnimationActive={chartData.length < 24}
         />
-      </BarChart>
+      </AreaChart>
     </ResponsiveContainer>
   );
 });

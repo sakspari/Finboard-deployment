@@ -19,10 +19,10 @@ export const InsightsPanel = React.memo(function InsightsPanel() {
       initial="hidden"
       animate="visible"
       transition={{ staggerChildren: 0.08 }}
-      className="grid grid-cols-1 md:grid-cols-3 gap-4"
+      className="grid grid-cols-1 gap-4 h-full"
     >
       {insights.topCategory && (
-        <motion.div variants={cardVariants} className="rounded-xl border border-border bg-surface-secondary p-5">
+        <motion.div variants={cardVariants} className="glass-panel rounded-[28px] p-5 md:p-6">
           <div className="flex items-center gap-2 mb-3">
             <div className="h-2 w-2 rounded-full" style={{ backgroundColor: "var(--color-chart-1)" }} />
             <span className="text-xs font-medium uppercase tracking-wider text-text-tertiary">
@@ -39,7 +39,7 @@ export const InsightsPanel = React.memo(function InsightsPanel() {
       )}
 
       {insights.biggestExpense && (
-        <motion.div variants={cardVariants} className="rounded-xl border border-border bg-surface-secondary p-5">
+        <motion.div variants={cardVariants} className="glass-panel rounded-[28px] p-5 md:p-6">
           <div className="flex items-center gap-2 mb-3">
             <div className="h-2 w-2 rounded-full" style={{ backgroundColor: "var(--color-expense)" }} />
             <span className="text-xs font-medium uppercase tracking-wider text-text-tertiary">
@@ -55,7 +55,7 @@ export const InsightsPanel = React.memo(function InsightsPanel() {
         </motion.div>
       )}
 
-      <motion.div variants={cardVariants} className="rounded-xl border border-border bg-surface-secondary p-5">
+      <motion.div variants={cardVariants} className="glass-panel rounded-[28px] p-5 md:p-6">
         <div className="flex items-center gap-2 mb-3">
           <div className="h-2 w-2 rounded-full" style={{ backgroundColor: "var(--color-balance)" }} />
           <span className="text-xs font-medium uppercase tracking-wider text-text-tertiary">

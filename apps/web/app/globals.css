@@ -2,48 +2,47 @@
 
 @theme {
   /* Surfaces */
-  --color-surface-primary: #FAFAF7;
-  --color-surface-secondary: #F2F0EB;
-  --color-surface-tertiary: #E8E5DE;
-  --color-surface-inverse: #1C1917;
+  --color-surface-primary: #F0F0F3;
+  --color-surface-secondary: rgba(255, 255, 255, 0.06);
+  --color-surface-tertiary: rgba(255, 255, 255, 0.04);
+  --color-surface-inverse: #2A2A2E;
 
-  /* Text */
-  --color-text-primary: #1C1917;
-  --color-text-secondary: #57534E;
-  --color-text-tertiary: #A8A29E;
+  /* Text (designed for dark tile surfaces) */
+  --color-text-primary: #FAFAFA;
+  --color-text-secondary: #A1A1AA;
+  --color-text-tertiary: #71717A;
 
-  /* Semantic */
-  --color-income: #16653A;
-  --color-income-bg: #ECFDF5;
-  --color-expense: #B91C1C;
-  --color-expense-bg: #FEF2F2;
-  --color-balance: #1D4E89;
-  --color-balance-bg: #EFF6FF;
-  --color-neutral: #78716C;
-  --color-neutral-bg: #F5F5F4;
+  /* Semantic — vivid accents on dark */
+  --color-income: #22C55E;
+  --color-income-bg: rgba(34, 197, 94, 0.12);
+  --color-expense: #F43F5E;
+  --color-expense-bg: rgba(244, 63, 94, 0.12);
+  --color-balance: #3B82F6;
+  --color-balance-bg: rgba(59, 130, 246, 0.12);
+  --color-neutral: #71717A;
+  --color-neutral-bg: rgba(113, 113, 122, 0.14);
 
-  /* Chart palette */
-  --color-chart-1: #2D6A4F;
-  --color-chart-2: #6B4C9A;
-  --color-chart-3: #C06014;
-  --color-chart-4: #1D4E89;
-  --color-chart-5: #92782A;
-  --color-chart-6: #B44D6C;
-  --color-chart-7: #3B7A8B;
-  --color-chart-8: #5C6B3C;
-  --color-chart-9: #16653A;
-  --color-chart-10: #8B6B4A;
-  --color-chart-11: #78716C;
+  /* Chart palette — electric on dark */
+  --color-chart-1: #3B82F6;
+  --color-chart-2: #22C55E;
+  --color-chart-3: #F97316;
+  --color-chart-4: #8B5CF6;
+  --color-chart-5: #EF4444;
+  --color-chart-6: #06B6D4;
+  --color-chart-7: #84CC16;
+  --color-chart-8: #F59E0B;
+  --color-chart-9: #EC4899;
+  --color-chart-10: #A78BFA;
+  --color-chart-11: #6B7280;
 
-  /* Accent */
-  --color-masthead: #C4A35A;
-  --color-border: #E8E5DE;
-  --color-border-hover: #D6D3CC;
-  --color-focus: #1D4E89;
+  /* Borders & focus */
+  --color-border: rgba(255, 255, 255, 0.06);
+  --color-border-hover: rgba(255, 255, 255, 0.12);
+  --color-focus: #3B82F6;
 
   /* Fonts */
-  --font-display: 'Newsreader', Georgia, serif;
-  --font-body: 'DM Sans', sans-serif;
+  --font-display: 'Manrope', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
   /* Spacing */
@@ -51,10 +50,95 @@
   --spacing-card: 1.5rem;
 }
 
+:root {
+  color-scheme: dark;
+}
+
+html {
+  min-height: 100%;
+  background: #F0F0F3;
+}
+
 body {
   font-family: var(--font-body);
-  background-color: var(--color-surface-primary);
   color: var(--color-text-primary);
+  min-height: 100vh;
+  background: #F0F0F3;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Dark tile surfaces ─── */
+
+.glass-shell {
+  background: #18181B;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 2px 24px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.glass-panel {
+  background: #18181B;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 2px 16px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.glass-panel-soft {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glass-button {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-button:hover {
+  background: rgba(255, 255, 255, 0.10);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.glass-grid {
+  position: relative;
+}
+
+.glass-grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 40%);
+  pointer-events: none;
+}
+
+.selection-pill {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Scrollbar */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 2px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* Date input */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.8);
+  cursor: pointer;
 }

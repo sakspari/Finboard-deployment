@@ -18,7 +18,7 @@ const cardVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.4, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] },
+    transition: { duration: 0.42, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
   },
 };
 
@@ -34,23 +34,26 @@ function Card({ label, value, accentColor, bgColor, icon }: CardProps) {
   return (
     <motion.div
       variants={cardVariants}
-      className={`relative overflow-hidden rounded-xl border border-border bg-surface-secondary`}
+      whileHover={{ y: -4, scale: 1.008 }}
+      transition={{ type: "spring", stiffness: 240, damping: 22 }}
+      className="glass-panel glass-grid relative overflow-hidden rounded-[28px]"
     >
-      <div className={`absolute left-0 top-0 bottom-0 w-1`} style={{ backgroundColor: accentColor }} />
-      <div className="p-5 pl-4 ml-1">
+      <div className="absolute inset-x-0 top-0 h-px opacity-70" style={{ background: `linear-gradient(90deg, ${accentColor}, transparent 65%)` }} />
+      <div className="absolute left-0 top-4 bottom-4 w-[3px] rounded-full opacity-90" style={{ backgroundColor: accentColor }} />
+      <div className="p-5 md:p-6 pl-5 ml-1">
         <div className="flex items-center justify-between">
-          <span className="text-xs font-medium uppercase tracking-wider text-text-tertiary font-[family-name:var(--font-body)]">
+          <span className="text-[11px] font-medium uppercase tracking-[0.22em] text-text-tertiary font-[family-name:var(--font-body)]">
             {label}
           </span>
           <div
-            className="flex h-8 w-8 items-center justify-center rounded-lg"
+            className="glass-panel-soft flex h-10 w-10 items-center justify-center rounded-2xl"
             style={{ backgroundColor: bgColor }}
           >
             {icon}
           </div>
         </div>
         <p
-          className="mt-2 text-2xl font-semibold font-[family-name:var(--font-display)] tabular-nums"
+          className="mt-3 text-[2rem] md:text-[2.2rem] leading-none font-semibold font-[family-name:var(--font-display)] tracking-[-0.04em] tabular-nums"
           style={{ color: accentColor }}
         >
           {value}
