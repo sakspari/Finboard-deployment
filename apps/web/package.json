@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev --port 3000",
     "build": "next build",
-    "start": "next start",
+    "start": "node .next/standalone/apps/web/server.js",
     "lint": "echo 'lint: typecheck covers type safety'",
     "typecheck": "tsc --noEmit"
   },

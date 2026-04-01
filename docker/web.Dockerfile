@@ -15,7 +15,7 @@ COPY --from=deps /app/apps/web/node_modules ./apps/web/node_modules
 COPY --from=deps /app/packages/shared/node_modules ./packages/shared/node_modules
 COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
-RUN pnpm --filter @finboard/web build
+RUN pnpm --filter @finboard/shared build && pnpm --filter @finboard/web build
 
 FROM node:20-alpine AS runner
 WORKDIR /app
