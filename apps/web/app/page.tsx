@@ -19,7 +19,7 @@ export default function Home() {
   const hasData = status === "success";
 
   return (
-    <div className="min-h-screen bg-transparent">
+    <div className="min-h-screen bg-slate-950">
       <Header />
       <main className="max-w-[1320px] mx-auto px-4 md:px-8 py-8 md:py-10">
         {hasData ? <Dashboard /> : <UploadZone />}

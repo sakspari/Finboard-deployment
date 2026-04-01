@@ -36,9 +36,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${manrope.variable} ${inter.variable} ${jetbrainsMono.variable}`}
+      className={`${manrope.variable} ${inter.variable} ${jetbrainsMono.variable} bg-slate-950`}
     >
-      <body>{children}</body>
+      <body className="bg-slate-950 text-slate-100">{children}</body>
     </html>
   );
 }

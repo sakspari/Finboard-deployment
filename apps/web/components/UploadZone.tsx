@@ -97,8 +97,8 @@ export function UploadZone() {
           onClick={handleClick}
           className={`glass-shell glass-grid relative cursor-pointer rounded-[32px] p-12 md:p-16 text-center transition-all duration-300
             ${isDragging
-              ? "border-[rgba(124,140,255,0.55)] bg-balance-bg/70 scale-[1.015] shadow-[0_20px_80px_rgba(79,140,255,0.18)]"
-              : "hover:border-border-hover hover:-translate-y-0.5"
+              ? "!bg-slate-800 border-blue-500/60 scale-[1.015] shadow-[0_20px_80px_rgba(59,130,246,0.15)]"
+              : "hover:border-slate-600 hover:-translate-y-0.5"
             }
             ${isUploading ? "pointer-events-none opacity-70" : ""}
           `}
@@ -113,22 +113,22 @@ export function UploadZone() {
 
           <div className="flex flex-col items-center gap-5 md:gap-6">
             {isUploading ? (
-              <div className="h-12 w-12 animate-spin rounded-full border-4 border-white/60 border-t-balance shadow-lg" />
+              <div className="h-12 w-12 animate-spin rounded-full border-4 border-slate-600 border-t-blue-500 shadow-lg" />
             ) : (
               <motion.div
                 animate={{ y: [0, -4, 0] }}
                 transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut' }}
                 className="glass-panel-soft flex h-20 w-20 items-center justify-center rounded-[28px]"
               >
-                <FileSpreadsheet className="h-9 w-9 text-text-secondary" />
+                <FileSpreadsheet className="h-9 w-9 text-slate-400" />
               </motion.div>
             )}
 
             <div className="space-y-2">
-              <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-semibold tracking-[-0.04em] text-text-primary">
+              <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-semibold tracking-[-0.04em] text-slate-100">
                 {isUploading ? "Processing your statement" : "Drop your bank statement"}
               </h2>
-              <p className="mx-auto max-w-md text-sm md:text-base text-text-secondary leading-relaxed">
+              <p className="mx-auto max-w-md text-sm md:text-base text-slate-400 leading-relaxed">
                 {isUploading
                   ? "Parsing rows, detecting categories, and turning the CSV into a polished finance dashboard."
                   : "Upload a CSV up to 5MB and Finboard will turn it into clean spending visuals, category insights, and searchable transactions."}
@@ -139,7 +139,7 @@ export function UploadZone() {
               <motion.button
                 whileHover={{ y: -2, scale: 1.01 }}
                 whileTap={{ scale: 0.985 }}
-                className="glass-button mt-1 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium text-text-primary transition-all"
+                className="glass-button mt-1 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium text-slate-100 transition-all"
               >
                 <Upload className="h-4 w-4" />
                 Browse files

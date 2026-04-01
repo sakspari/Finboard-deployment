@@ -15,12 +15,12 @@ export const ComparisonToggle = React.memo(function ComparisonToggle() {
       whileTap={{ scale: 0.98 }}
       onClick={toggleComparison}
       className={`
-        glass-button relative flex items-center gap-2 rounded-full px-3 py-2 text-sm
+        relative flex items-center gap-2 rounded-full border px-3 py-2 text-sm
         font-medium transition-all duration-200
         ${
           isComparing
-            ? "border-balance bg-balance-bg/60 text-balance shadow-[0_0_12px_rgba(74,125,255,0.15)]"
-            : "text-text-secondary"
+            ? "border-balance bg-balance-bg/60 text-white shadow-[0_0_12px_rgba(74,125,255,0.15)]"
+            : "border-slate-700 bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-slate-100"
         }
       `}
       aria-pressed={isComparing}

@@ -120,7 +120,7 @@ function DeltaCard({
       variants={itemVariants}
       whileHover={{ y: -4, scale: 1.008 }}
       transition={{ type: "spring", stiffness: 240, damping: 22 }}
-      className="glass-panel glass-grid relative overflow-hidden rounded-[28px]"
+      className="relative overflow-hidden rounded-[28px] border border-slate-700 bg-slate-900"
     >
       {/* Top accent line */}
       <div
@@ -135,7 +135,7 @@ function DeltaCard({
 
       <div className="p-5 md:p-6 pl-5 ml-1">
         <div className="flex items-center justify-between">
-          <span className="text-[11px] font-medium uppercase tracking-[0.22em] text-text-tertiary font-[family-name:var(--font-body)]">
+          <span className="text-[11px] font-medium uppercase tracking-[0.22em] text-slate-500 font-[family-name:var(--font-body)]">
             {delta.label}
           </span>
           <DeltaBadge delta={delta} favorable={favorable} />
@@ -144,7 +144,7 @@ function DeltaCard({
         {/* Period values side by side */}
         <div className="mt-3 flex items-end gap-4">
           <div className="min-w-0">
-            <p className="text-[10px] uppercase tracking-wider text-text-tertiary truncate">
+            <p className="text-[10px] uppercase tracking-wider text-slate-500 truncate">
               {period1Label}
             </p>
             <p
@@ -157,7 +157,7 @@ function DeltaCard({
             </p>
           </div>
           <div className="min-w-0">
-            <p className="text-[10px] uppercase tracking-wider text-text-tertiary truncate">
+            <p className="text-[10px] uppercase tracking-wider text-slate-500 truncate">
               {period2Label}
             </p>
             <p
@@ -208,10 +208,10 @@ const PeriodSelector = React.memo(function PeriodSelector() {
   );
 
   return (
-    <motion.div variants={itemVariants} className="glass-panel rounded-[28px] p-5 md:p-6">
+    <motion.div variants={itemVariants} className="rounded-[28px] border border-slate-700 bg-slate-900 p-5 md:p-6">
       <div className="flex items-center gap-2 mb-4">
-        <Calendar className="h-4 w-4 text-text-tertiary" />
-        <span className="text-xs font-medium uppercase tracking-wider text-text-tertiary font-[family-name:var(--font-body)]">
+        <Calendar className="h-4 w-4 text-slate-400" />
+        <span className="text-xs font-medium uppercase tracking-wider text-slate-400 font-[family-name:var(--font-body)]">
           Period Selection
         </span>
       </div>
@@ -222,8 +222,8 @@ const PeriodSelector = React.memo(function PeriodSelector() {
           onClick={() => handleModeToggle("auto")}
           className={`rounded-full px-4 py-2 text-xs font-medium transition-all ${
             mode === "auto"
-              ? "glass-button text-text-primary shadow-sm"
-              : "text-text-tertiary hover:text-text-secondary"
+              ? "bg-blue-500 text-white shadow-sm"
+              : "bg-slate-800 text-slate-400 hover:text-slate-300 hover:bg-slate-700"
           }`}
         >
           Auto (split in half)
@@ -232,8 +232,8 @@ const PeriodSelector = React.memo(function PeriodSelector() {
           onClick={() => handleModeToggle("custom")}
           className={`rounded-full px-4 py-2 text-xs font-medium transition-all ${
             mode === "custom"
-              ? "glass-button text-text-primary shadow-sm"
-              : "text-text-tertiary hover:text-text-secondary"
+              ? "bg-blue-500 text-white shadow-sm"
+              : "bg-slate-800 text-slate-400 hover:text-slate-300 hover:bg-slate-700"
           }`}
         >
           Custom dates
@@ -252,8 +252,8 @@ const PeriodSelector = React.memo(function PeriodSelector() {
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
               {/* Period 1 */}
-              <div className="glass-panel-soft rounded-2xl p-4">
-                <p className="text-[10px] font-medium uppercase tracking-wider text-text-tertiary mb-3">
+              <div className="rounded-2xl border border-slate-700/50 bg-slate-800 p-4">
+                <p className="text-[10px] font-medium uppercase tracking-wider text-slate-400 mb-3">
                   Period 1
                 </p>
                 <div className="flex gap-2">
@@ -261,20 +261,20 @@ const PeriodSelector = React.memo(function PeriodSelector() {
                     type="date"
                     value={customPeriod1?.start ?? ""}
                     onChange={(e) => handlePeriodChange(1, "start", e.target.value)}
-                    className="glass-panel-soft w-full rounded-xl px-3 py-2 text-xs font-[family-name:var(--font-mono)] text-text-primary outline-none focus:ring-2 focus:ring-[var(--color-focus)]/40"
+                    className="w-full rounded-xl border border-slate-700 bg-slate-800 px-3 py-2 text-xs font-[family-name:var(--font-mono)] text-slate-100 outline-none focus:ring-2 focus:ring-[var(--color-focus)]/40"
                   />
                   <input
                     type="date"
                     value={customPeriod1?.end ?? ""}
                     onChange={(e) => handlePeriodChange(1, "end", e.target.value)}
-                    className="glass-panel-soft w-full rounded-xl px-3 py-2 text-xs font-[family-name:var(--font-mono)] text-text-primary outline-none focus:ring-2 focus:ring-[var(--color-focus)]/40"
+                    className="w-full rounded-xl border border-slate-700 bg-slate-800 px-3 py-2 text-xs font-[family-name:var(--font-mono)] text-slate-100 outline-none focus:ring-2 focus:ring-[var(--color-focus)]/40"
                   />
                 </div>
               </div>
 
               {/* Period 2 */}
-              <div className="glass-panel-soft rounded-2xl p-4">
-                <p className="text-[10px] font-medium uppercase tracking-wider text-text-tertiary mb-3">
+              <div className="rounded-2xl border border-slate-700/50 bg-slate-800 p-4">
+                <p className="text-[10px] font-medium uppercase tracking-wider text-slate-400 mb-3">
                   Period 2
                 </p>
                 <div className="flex gap-2">
@@ -282,13 +282,13 @@ const PeriodSelector = React.memo(function PeriodSelector() {
                     type="date"
                     value={customPeriod2?.start ?? ""}
                     onChange={(e) => handlePeriodChange(2, "start", e.target.value)}
-                    className="glass-panel-soft w-full rounded-xl px-3 py-2 text-xs font-[family-name:var(--font-mono)] text-text-primary outline-none focus:ring-2 focus:ring-[var(--color-focus)]/40"
+                    className="w-full rounded-xl border border-slate-700 bg-slate-800 px-3 py-2 text-xs font-[family-name:var(--font-mono)] text-slate-100 outline-none focus:ring-2 focus:ring-[var(--color-focus)]/40"
                   />
                   <input
                     type="date"
                     value={customPeriod2?.end ?? ""}
                     onChange={(e) => handlePeriodChange(2, "end", e.target.value)}
-                    className="glass-panel-soft w-full rounded-xl px-3 py-2 text-xs font-[family-name:var(--font-mono)] text-text-primary outline-none focus:ring-2 focus:ring-[var(--color-focus)]/40"
+                    className="w-full rounded-xl border border-slate-700 bg-slate-800 px-3 py-2 text-xs font-[family-name:var(--font-mono)] text-slate-100 outline-none focus:ring-2 focus:ring-[var(--color-focus)]/40"
                   />
                 </div>
               </div>
@@ -312,11 +312,11 @@ const CategoryChangesTable = React.memo(function CategoryChangesTable({
   if (comparison.topCategoryChanges.length === 0) return null;
 
   return (
-    <motion.div variants={itemVariants} className="glass-panel overflow-hidden rounded-[28px]">
+    <motion.div variants={itemVariants} className="overflow-hidden rounded-[28px] border border-slate-700 bg-slate-900">
       <div className="p-5 md:p-6 pb-0">
         <div className="flex items-center gap-2 mb-4">
-          <GitCompare className="h-4 w-4 text-text-tertiary" />
-          <span className="text-xs font-medium uppercase tracking-wider text-text-tertiary font-[family-name:var(--font-body)]">
+          <GitCompare className="h-4 w-4 text-slate-400" />
+          <span className="text-xs font-medium uppercase tracking-wider text-slate-400 font-[family-name:var(--font-body)]">
             Category Changes
           </span>
         </div>
@@ -325,17 +325,17 @@ const CategoryChangesTable = React.memo(function CategoryChangesTable({
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
-            <tr className="border-b border-white/8 bg-white/4">
-              <th className="px-5 py-3 text-left text-[10px] font-medium uppercase tracking-wider text-text-tertiary">
+            <tr className="border-b border-slate-700 bg-slate-800">
+              <th className="px-5 py-3 text-left text-[10px] font-medium uppercase tracking-wider text-slate-300">
                 Category
               </th>
-              <th className="px-5 py-3 text-right text-[10px] font-medium uppercase tracking-wider text-text-tertiary">
+              <th className="px-5 py-3 text-right text-[10px] font-medium uppercase tracking-wider text-slate-300">
                 {comparison.period1Label}
               </th>
-              <th className="px-5 py-3 text-right text-[10px] font-medium uppercase tracking-wider text-text-tertiary">
+              <th className="px-5 py-3 text-right text-[10px] font-medium uppercase tracking-wider text-slate-300">
                 {comparison.period2Label}
               </th>
-              <th className="px-5 py-3 text-right text-[10px] font-medium uppercase tracking-wider text-text-tertiary">
+              <th className="px-5 py-3 text-right text-[10px] font-medium uppercase tracking-wider text-slate-300">
                 Change
               </th>
             </tr>
@@ -355,15 +355,15 @@ const CategoryChangesTable = React.memo(function CategoryChangesTable({
               return (
                 <tr
                   key={cat.category}
-                  className="border-b border-white/6 last:border-0 hover:bg-white/5 transition-colors"
+                  className="border-b border-slate-700/50 last:border-0 bg-slate-900 hover:bg-slate-800 transition-colors"
                 >
-                  <td className="px-5 py-3 text-text-primary font-medium text-sm">
+                  <td className="px-5 py-3 text-slate-100 font-medium text-sm">
                     {cat.category}
                   </td>
-                  <td className="px-5 py-3 text-right font-[family-name:var(--font-mono)] text-text-secondary text-sm tabular-nums">
+                  <td className="px-5 py-3 text-right font-[family-name:var(--font-mono)] text-slate-400 text-sm tabular-nums">
                     {formatCurrency(cat.period1Amount)}
                   </td>
-                  <td className="px-5 py-3 text-right font-[family-name:var(--font-mono)] text-text-secondary text-sm tabular-nums">
+                  <td className="px-5 py-3 text-right font-[family-name:var(--font-mono)] text-slate-400 text-sm tabular-nums">
                     {formatCurrency(cat.period2Amount)}
                   </td>
                   <td className="px-5 py-3 text-right">

@@ -29,10 +29,10 @@ const CATEGORY_COLORS: Record<string, string> = {
 };
 
 function SortIcon({ field, sortField, sortDir }: { field: SortField; sortField: SortField; sortDir: SortDir }) {
-  if (field !== sortField) return <ChevronsUpDown className="h-3 w-3 text-text-tertiary" />;
+  if (field !== sortField) return <ChevronsUpDown className="h-3 w-3 text-slate-400" />;
   return sortDir === "asc"
-    ? <ChevronUp className="h-3 w-3 text-text-primary" />
-    : <ChevronDown className="h-3 w-3 text-text-primary" />;
+    ? <ChevronUp className="h-3 w-3 text-slate-100" />
+    : <ChevronDown className="h-3 w-3 text-slate-100" />;
 }
 
 export const TransactionTable = React.memo(function TransactionTable() {
@@ -89,7 +89,7 @@ export const TransactionTable = React.memo(function TransactionTable() {
 
   if (transactions.length === 0) {
     return (
-      <div className="glass-panel rounded-[28px] p-8 text-center text-sm text-text-tertiary">
+      <div className="rounded-[28px] border border-slate-700 bg-slate-900 p-8 text-center text-sm text-slate-400">
         No transactions match your filters
       </div>
     );
@@ -97,16 +97,16 @@ export const TransactionTable = React.memo(function TransactionTable() {
 
   return (
     <>
-      <div className="glass-panel overflow-hidden rounded-[28px]">
+      <div className="overflow-hidden rounded-[28px] border border-slate-700 bg-slate-900">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-white/8 bg-white/4">
+              <tr className="border-b border-slate-700 bg-slate-800">
                 {(["date", "description", "category", "amount"] as SortField[]).map((field) => (
                   <th
                     key={field}
                     onClick={() => toggleSort(field)}
-                    className={`px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-text-tertiary cursor-pointer hover:text-text-secondary select-none ${field === "amount" ? "text-right" : ""}`}
+                    className={`px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-slate-300 cursor-pointer hover:text-slate-100 select-none ${field === "amount" ? "text-right" : ""}`}
                   >
                     <span className="inline-flex items-center gap-1">
                       {field}
@@ -123,11 +123,11 @@ export const TransactionTable = React.memo(function TransactionTable() {
               transition={{ duration: 0.15 }}
             >
               {paged.map((txn) => (
-                <tr key={txn.id} className="border-b border-white/6 last:border-0 hover:bg-white/5 transition-colors">
-                  <td className="px-4 py-3 font-[family-name:var(--font-mono)] text-xs text-text-secondary whitespace-nowrap">
+                <tr key={txn.id} className="border-b border-slate-700/50 last:border-0 bg-slate-900 hover:bg-slate-800 transition-colors">
+                  <td className="px-4 py-3 font-[family-name:var(--font-mono)] text-xs text-slate-400 whitespace-nowrap">
                     {formatDate(txn.date)}
                   </td>
-                  <td className="px-4 py-3 text-text-primary max-w-[300px] truncate">
+                  <td className="px-4 py-3 text-slate-100 max-w-[300px] truncate">
                     {txn.description}
                   </td>
                   <td className="px-4 py-3">
@@ -136,7 +136,7 @@ export const TransactionTable = React.memo(function TransactionTable() {
                       className={`inline-block rounded-full px-2.5 py-1 text-xs font-medium border transition-all cursor-pointer hover:shadow-md hover:scale-[1.03] ${
                         isCorrected(txn)
                           ? "border-balance/40 ring-1 ring-balance/20 " + (CATEGORY_COLORS[txn.category] || "bg-neutral-bg text-neutral")
-                          : "border-white/10 " + (CATEGORY_COLORS[txn.category] || "bg-neutral-bg text-neutral")
+                          : "border-slate-700 " + (CATEGORY_COLORS[txn.category] || "bg-neutral-bg text-neutral")
                       }`}
                       title="Click to change category"
                     >
@@ -153,22 +153,22 @@ export const TransactionTable = React.memo(function TransactionTable() {
         </div>
 
         {totalPages > 1 && (
-          <div className="flex items-center justify-between border-t border-border px-4 py-3">
-            <span className="text-xs text-text-tertiary">
+          <div className="flex items-center justify-between border-t border-slate-700 px-4 py-3 bg-slate-900">
+            <span className="text-xs text-slate-400">
               Showing {page * pageSize + 1}–{Math.min((page + 1) * pageSize, sorted.length)} of {sorted.length}
             </span>
             <div className="flex gap-2">
               <button
                 onClick={() => setPage((p) => Math.max(0, p - 1))}
                 disabled={page === 0}
-                className="text-xs text-text-secondary hover:text-text-primary disabled:opacity-40 disabled:cursor-not-allowed"
+                className="rounded-md bg-slate-800 px-3 py-1.5 text-xs text-slate-300 hover:bg-slate-700 hover:text-slate-100 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
               >
                 Previous
               </button>
               <button
                 onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
                 disabled={page >= totalPages - 1}
-                className="text-xs text-text-secondary hover:text-text-primary disabled:opacity-40 disabled:cursor-not-allowed"
+                className="rounded-md bg-slate-800 px-3 py-1.5 text-xs text-slate-300 hover:bg-slate-700 hover:text-slate-100 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
               >
                 Next
               </button>

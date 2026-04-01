@@ -128,7 +128,7 @@ export const ChartLayoutSwitcher = React.memo(function ChartLayoutSwitcher({
   onLayoutChange,
 }: ChartLayoutSwitcherProps) {
   return (
-    <div className="glass-panel-soft rounded-[20px] px-2 py-1.5 inline-flex items-center gap-1.5 overflow-x-auto">
+    <div className="glass-panel-soft rounded-[20px] px-2 py-1.5 inline-flex items-center gap-1.5 overflow-x-auto scrollbar-thin">
       {CHART_LAYOUTS.map((layout) => {
         const isActive = layout.id === activeLayout;
 
@@ -144,8 +144,8 @@ export const ChartLayoutSwitcher = React.memo(function ChartLayoutSwitcher({
               uppercase tracking-[0.14em] transition-colors select-none whitespace-nowrap
               ${
                 isActive
-                  ? "border border-balance bg-balance-bg/40 text-balance"
-                  : "border border-transparent text-text-secondary hover:text-text-primary"
+                  ? "border border-blue-500/50 bg-blue-500/10 text-blue-400"
+                  : "border border-transparent text-slate-400 hover:text-slate-100 hover:bg-slate-700/50"
               }
             `}
             aria-pressed={isActive}
@@ -155,7 +155,7 @@ export const ChartLayoutSwitcher = React.memo(function ChartLayoutSwitcher({
             {isActive && (
               <motion.span
                 layoutId="chart-layout-active"
-                className="absolute inset-0 rounded-lg border border-balance/30 bg-balance-bg/20"
+                className="absolute inset-0 rounded-lg border border-blue-500/30 bg-blue-500/10"
                 transition={{ type: "spring", stiffness: 380, damping: 30 }}
               />
             )}

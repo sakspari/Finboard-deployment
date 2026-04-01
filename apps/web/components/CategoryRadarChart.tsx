@@ -24,9 +24,9 @@ function CustomTooltip({
   if (!item) return null;
 
   return (
-    <div className="glass-panel rounded-2xl px-3 py-2 text-sm text-text-primary shadow-xl">
+    <div className="rounded-2xl px-3 py-2 text-sm shadow-xl" style={{ backgroundColor: "#1e293b", border: "1px solid #334155", color: "#f1f5f9" }}>
       <p className="font-medium">{item.name}</p>
-      <p className="font-[family-name:var(--font-mono)] text-xs mt-0.5">
+      <p className="font-[family-name:var(--font-mono)] text-xs mt-0.5 text-slate-300">
         {formatCurrency(item.value)}
       </p>
     </div>
@@ -59,10 +59,10 @@ export const CategoryRadarChart = React.memo(function CategoryRadarChart() {
   return (
     <ResponsiveContainer width="100%" height={320}>
       <RadarChart data={normalized} outerRadius="72%">
-        <PolarGrid stroke="rgba(255,255,255,0.08)" />
+        <PolarGrid stroke="rgba(51,65,85,0.50)" />
         <PolarAngleAxis
           dataKey="subject"
-          tick={{ fill: "var(--color-text-secondary)", fontSize: 11 }}
+          tick={{ fill: "#94a3b8", fontSize: 11 }}
         />
         <Tooltip content={<CustomTooltip />} />
         <Radar

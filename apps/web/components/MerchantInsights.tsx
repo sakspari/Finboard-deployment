@@ -125,7 +125,7 @@ export const MerchantInsights = React.memo(function MerchantInsights() {
                 <motion.li
                   key={item.merchant}
                   variants={itemVariants}
-                  className="rounded-2xl border border-white/6 bg-white/3 p-4 transition-colors hover:bg-white/5"
+                  className="rounded-2xl border border-slate-700/50 bg-slate-800/40 p-4 transition-colors hover:bg-slate-800/70"
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div className="min-w-0 flex-1">
@@ -134,9 +134,9 @@ export const MerchantInsights = React.memo(function MerchantInsights() {
                           {item.merchant}
                         </span>
                         <span
-                          className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide border border-white/10"
+                          className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide border border-slate-700/50"
                           style={{
-                            backgroundColor: "color-mix(in srgb, var(--color-chart-1) 12%, transparent)",
+                            backgroundColor: "color-mix(in srgb, var(--color-chart-1) 15%, transparent)",
                             color: "var(--color-chart-1)",
                           }}
                         >
@@ -144,7 +144,7 @@ export const MerchantInsights = React.memo(function MerchantInsights() {
                           {FREQUENCY_LABELS[item.frequency]}
                         </span>
                         <span
-                          className={`inline-block rounded-full px-2 py-0.5 text-[10px] font-medium border border-white/10 ${CATEGORY_COLORS[item.category] || "bg-neutral-bg text-neutral"}`}
+                          className={`inline-block rounded-full px-2 py-0.5 text-[10px] font-medium border border-slate-700/50 ${CATEGORY_COLORS[item.category] || "bg-neutral-bg text-neutral"}`}
                         >
                           {item.category}
                         </span>
@@ -248,7 +248,7 @@ export const MerchantInsights = React.memo(function MerchantInsights() {
                         {merchant.merchant}
                       </span>
                       <span
-                        className={`inline-block shrink-0 rounded-full px-2 py-0.5 text-[10px] font-medium border border-white/10 ${CATEGORY_COLORS[merchant.category] || "bg-neutral-bg text-neutral"}`}
+                        className={`inline-block shrink-0 rounded-full px-2 py-0.5 text-[10px] font-medium border border-slate-700/50 ${CATEGORY_COLORS[merchant.category] || "bg-neutral-bg text-neutral"}`}
                       >
                         {merchant.category}
                       </span>
@@ -262,7 +262,7 @@ export const MerchantInsights = React.memo(function MerchantInsights() {
                   </div>
 
                   {/* Bar visualization */}
-                  <div className="ml-7 h-2 rounded-full overflow-hidden bg-white/5">
+                  <div className="ml-7 h-2 rounded-full overflow-hidden bg-slate-800/60">
                     <motion.div
                       className="h-full rounded-full origin-left"
                       style={{

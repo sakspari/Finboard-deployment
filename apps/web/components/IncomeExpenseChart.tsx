@@ -26,7 +26,7 @@ function CustomTooltip({
   if (!active || !payload || payload.length === 0) return null;
 
   return (
-    <div className="glass-panel rounded-2xl px-3 py-2 text-sm text-text-primary shadow-xl">
+    <div className="rounded-2xl px-3 py-2 text-sm shadow-xl" style={{ backgroundColor: "#1e293b", border: "1px solid #334155", color: "#f1f5f9" }}>
       <p className="font-medium mb-1">{label}</p>
       {payload.map((entry, i) => (
         <p
@@ -72,21 +72,21 @@ export const IncomeExpenseChart = React.memo(function IncomeExpenseChart() {
             <stop offset="95%" stopColor="var(--color-expense)" stopOpacity={0.02} />
           </linearGradient>
         </defs>
-        <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" vertical={false} />
+        <CartesianGrid strokeDasharray="3 3" stroke="rgba(51,65,85,0.30)" vertical={false} />
         <XAxis
           dataKey="month"
-          tick={{ fontSize: 11, fill: "var(--color-text-tertiary)" }}
-          axisLine={{ stroke: "rgba(255,255,255,0.08)" }}
+          tick={{ fontSize: 11, fill: "#94a3b8" }}
+          axisLine={{ stroke: "rgba(51,65,85,0.50)" }}
           tickLine={false}
         />
         <YAxis
-          tick={{ fontSize: 11, fill: "var(--color-text-tertiary)" }}
+          tick={{ fontSize: 11, fill: "#94a3b8" }}
           axisLine={false}
           tickLine={false}
           tickFormatter={(v: number) => `$${(v / 1000).toFixed(0)}k`}
         />
         <Tooltip content={<CustomTooltip />} />
-        <Legend wrapperStyle={{ fontSize: 12 }} iconType="circle" iconSize={8} />
+        <Legend wrapperStyle={{ fontSize: 12, color: "#94a3b8" }} iconType="circle" iconSize={8} />
         <Area
           type="monotone"
           dataKey="Income"

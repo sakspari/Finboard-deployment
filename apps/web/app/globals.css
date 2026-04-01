@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  /* Surfaces */
-  --color-surface-primary: #F0F0F3;
-  --color-surface-secondary: rgba(255, 255, 255, 0.06);
-  --color-surface-tertiary: rgba(255, 255, 255, 0.04);
-  --color-surface-inverse: #2A2A2E;
+  /* Surfaces — dark slate */
+  --color-surface-primary: #020617;   /* slate-950 — page bg */
+  --color-surface-secondary: #0f172a; /* slate-900 — card/surface bg */
+  --color-surface-tertiary: #1e293b;  /* slate-800 — elevated surfaces */
+  --color-surface-inverse: #f1f5f9;   /* slate-100 */
 
-  /* Text (designed for dark tile surfaces) */
-  --color-text-primary: #FAFAFA;
-  --color-text-secondary: #A1A1AA;
-  --color-text-tertiary: #71717A;
+  /* Text (light on dark slate) */
+  --color-text-primary: #f1f5f9;   /* slate-100 */
+  --color-text-secondary: #94a3b8; /* slate-400 */
+  --color-text-tertiary: #64748b;  /* slate-500 */
 
   /* Semantic — vivid accents on dark */
   --color-income: #22C55E;
@@ -19,8 +19,8 @@
   --color-expense-bg: rgba(244, 63, 94, 0.12);
   --color-balance: #3B82F6;
   --color-balance-bg: rgba(59, 130, 246, 0.12);
-  --color-neutral: #71717A;
-  --color-neutral-bg: rgba(113, 113, 122, 0.14);
+  --color-neutral: #64748b;
+  --color-neutral-bg: rgba(100, 116, 139, 0.14);
 
   /* Chart palette — electric on dark */
   --color-chart-1: #3B82F6;
@@ -35,9 +35,9 @@
   --color-chart-10: #A78BFA;
   --color-chart-11: #6B7280;
 
-  /* Borders & focus */
-  --color-border: rgba(255, 255, 255, 0.06);
-  --color-border-hover: rgba(255, 255, 255, 0.12);
+  /* Borders & focus — slate-700 based */
+  --color-border: #334155;                   /* slate-700 */
+  --color-border-hover: rgba(51, 65, 85, 0.7); /* slate-700/70 */
   --color-focus: #3B82F6;
 
   /* Fonts */
@@ -56,49 +56,51 @@
 
 html {
   min-height: 100%;
-  background: #F0F0F3;
+  background: #020617; /* slate-950 */
 }
 
 body {
   font-family: var(--font-body);
   color: var(--color-text-primary);
   min-height: 100vh;
-  background: #F0F0F3;
+  background: #020617; /* slate-950 */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ─── Dark tile surfaces ─── */
+/* ─── Dark slate surfaces ─── */
 
 .glass-shell {
-  background: #18181B;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(15, 23, 42, 0.80); /* slate-900/80 */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(51, 65, 85, 0.5); /* slate-700/50 */
   box-shadow:
-    0 2px 24px rgba(0, 0, 0, 0.28),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    0 2px 24px rgba(0, 0, 0, 0.40),
+    inset 0 1px 0 rgba(148, 163, 184, 0.06); /* subtle slate-400 inset highlight */
 }
 
 .glass-panel {
-  background: #18181B;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: #0f172a; /* slate-900 */
+  border: 1px solid rgba(51, 65, 85, 0.5); /* slate-700/50 */
   box-shadow:
-    0 2px 16px rgba(0, 0, 0, 0.22),
-    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    0 2px 16px rgba(0, 0, 0, 0.30),
+    inset 0 1px 0 rgba(148, 163, 184, 0.04);
 }
 
 .glass-panel-soft {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: #1e293b; /* slate-800 */
+  border: 1px solid rgba(51, 65, 85, 0.5); /* slate-700/50 */
 }
 
 .glass-button {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #1e293b; /* slate-800 */
+  border: 1px solid rgba(51, 65, 85, 0.6); /* slate-700/60 */
 }
 
 .glass-button:hover {
-  background: rgba(255, 255, 255, 0.10);
-  border-color: rgba(255, 255, 255, 0.14);
+  background: #334155; /* slate-700 */
+  border-color: rgba(51, 65, 85, 0.9);
 }
 
 .glass-grid {
@@ -110,13 +112,13 @@ body {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 40%);
+  background: linear-gradient(180deg, rgba(148, 163, 184, 0.04), transparent 40%);
   pointer-events: none;
 }
 
 .selection-pill {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #1e293b; /* slate-800 */
+  border: 1px solid rgba(51, 65, 85, 0.6); /* slate-700/60 */
 }
 
 /* Scrollbar */
@@ -129,12 +131,24 @@ body {
 }
 
 .scrollbar-thin::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(51, 65, 85, 0.6); /* slate-700/60 */
   border-radius: 2px;
 }
 
 .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.22);
+  background: rgba(51, 65, 85, 0.9);
+}
+
+/* Selection highlight */
+::selection {
+  background: rgba(59, 130, 246, 0.3); /* blue accent selection */
+  color: #f1f5f9;
+}
+
+/* Focus visible ring */
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
 }
 
 /* Date input */

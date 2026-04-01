@@ -9,9 +9,9 @@ function CustomTooltip({ active, payload }: { active?: boolean; payload?: Array<
   if (!active || !payload || payload.length === 0) return null;
   const item = payload[0]!;
   return (
-    <div className="rounded-lg bg-surface-inverse px-3 py-2 text-sm text-white shadow-lg">
+    <div className="rounded-lg px-3 py-2 text-sm shadow-lg" style={{ backgroundColor: "#1e293b", border: "1px solid #334155", color: "#f1f5f9" }}>
       <p className="font-medium">{item.name}</p>
-      <p className="font-[family-name:var(--font-mono)] text-xs mt-0.5">{formatCurrency(item.value)}</p>
+      <p className="font-[family-name:var(--font-mono)] text-xs mt-0.5 text-slate-300">{formatCurrency(item.value)}</p>
     </div>
   );
 }
@@ -44,7 +44,7 @@ export const SpendingPieChart = React.memo(function SpendingPieChart() {
           animationDuration={500}
         >
           {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={entry.color} stroke="#18181B" strokeWidth={2} />
+            <Cell key={`cell-${index}`} fill={entry.color} stroke="#0f172a" strokeWidth={2} />
           ))}
           <Label
             position="center"
