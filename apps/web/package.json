@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --port 3000",
-    "build": "next build",
+    "build": "pnpm --filter @finboard/shared build && next build",
     "start": "node .next/standalone/apps/web/server.js",
     "lint": "echo 'lint: typecheck covers type safety'",
     "typecheck": "tsc --noEmit"
