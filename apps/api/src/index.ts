@@ -8,6 +8,9 @@ import { uploadRouter } from "./routes/upload.js";
 
 const app = express();
 
+// Trust reverse proxy (Railway, Docker, etc.)
+app.set("trust proxy", 1);
+
 // Security headers
 app.use(helmet());
 
